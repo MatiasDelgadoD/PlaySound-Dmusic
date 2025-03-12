@@ -1,18 +1,29 @@
 import fs from 'fs';
 import path from 'path';
-import { NextApiResponse } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default function handler( res: NextApiResponse) {
-  const sponsorDirectory = path.join(process.cwd(), 'public/patrocinadores');
-  const fileNames = fs.readdirSync(sponsorDirectory);
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    const sponsorDirectory = path.join(process.cwd(), 'public/patrocinadores');
+    
+    // Check if directory exists
+    if (!fs.existsSync(sponsorDirectory)) {
+      return res.status(404).json({ error: 'Sponsor directory not found' });
+    }
 
-  const sponsors = fileNames.map((fileName) => {
-    return {
-      id: fileName,
-      image: `/patrocinadores/${fileName}`,
-      name: fileName.replace(/\.[^/.]+$/, ''), 
-    };
-  });
+    const fileNames = fs.readdirSync(sponsorDirectory);
 
-  res.status(200).json(sponsors);
+    const sponsors = fileNames.map((fileName) => {
+      return {
+        id: fileName,
+        image: `/patrocinadores/${fileName}`,
+        name: fileName.replace(/\.[^/.]+$/, ''),
+      };
+    });
+
+    return res.status(200).json(sponsors);
+  } catch (error) {
+    console.error('Error fetching sponsors:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
 }
