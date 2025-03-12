@@ -24,17 +24,15 @@ const VideoPlayer = () => {
   }, []);
 
   const toggleFullScreen = useCallback((e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent default button behavior
-    const player = document.getElementById("player") as any;
+    e.preventDefault();
+    const player = document.getElementById("player") as HTMLElement;
     if (player) {
-      if (player.requestFullscreen) {
-        player.requestFullscreen();
-      } else if (player.mozRequestFullScreen) {
-        player.mozRequestFullScreen();
-      } else if (player.webkitRequestFullscreen) {
-        player.webkitRequestFullscreen();
-      } else if (player.msRequestFullscreen) {
-        player.msRequestFullscreen();
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        player.requestFullscreen().catch((err) => {
+          console.error('Error attempting to enable fullscreen:', err);
+        });
       }
     }
   }, []);

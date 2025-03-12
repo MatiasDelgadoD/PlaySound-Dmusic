@@ -1,9 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Logo from "../../../public/Copamex-0001.png";
-import { Button, Box } from "@mui/material";
+import {  Box } from "@mui/material";
 import ButtonCustom from "@/components/Button/CustomButton";
 import ButtonList from "../Button/ButtonList";
+// Remove or comment out this line if you're not using Button
+// import { Button } from '@mui/material';
 const ToolBar = () => {
   return (
     <Box

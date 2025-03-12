@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiResponse } from 'next';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler( res: NextApiResponse) {
   const sponsorDirectory = path.join(process.cwd(), 'public/patrocinadores');
   const fileNames = fs.readdirSync(sponsorDirectory);
 
