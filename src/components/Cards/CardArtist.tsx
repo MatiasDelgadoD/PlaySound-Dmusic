@@ -44,9 +44,24 @@ const CardArtist = () => {
   }
 
   return (
-    <Grid container spacing={2}>
+    <Grid 
+      container 
+      spacing={3} 
+      sx={{ 
+        margin: 0,
+        width: '100%',
+        padding: '24px'
+      }}
+    >
       {artists.map((artist) => ( 
-        <Grid item key={artist.id}>
+        <Grid 
+          item 
+          key={artist.id}
+          sx={{
+            padding: '12px',
+            marginLeft: 0
+          }}
+        >
           <Card
             sx={{
               height: 480,
@@ -99,7 +114,7 @@ const CardArtist = () => {
                   transform: 'translateY(0)',
                 }
               }}>
-                <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem' }}>
+                <h3 style={{ fontSize: '1.2rem' }}>
                   {artist.name}
                 </h3>
                 <p style={{ margin: 0, fontSize: '0.9rem', opacity: 0.8 }}>

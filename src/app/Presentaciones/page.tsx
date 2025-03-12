@@ -3,7 +3,7 @@
 
  const Arist =() =>{
    return (
-     <Box sx={{ mt:10, padding:'120px', backgroundColor:'rgba(1,1,1,0.5)',}}>
+     <Box sx={{ display:'flex' ,mt:10, padding:'100px',alignContent:'center', justifyItems:'center', backgroundColor:'rgba(1,1,1,0.5)',}}>
       
        <CardArtist />
      </Box>
