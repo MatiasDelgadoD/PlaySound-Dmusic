@@ -1,17 +1,10 @@
 @import "tailwindcss";
 
-*, 
-*::before,
+
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-/* Override MUI negative margin */
-.MuiContainer-root {
-  margin-left: 0 !important;
-  padding-left: 24px !important;
+  
 }
 :root {
   --background: black;
