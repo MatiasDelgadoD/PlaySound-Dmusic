@@ -10,6 +10,7 @@ interface Artist {
   album: string;
 }
 
+
 const CardArtist = () => {
   const [artists, setArtists] = React.useState<Artist[]>([]);
 

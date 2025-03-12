@@ -9,7 +9,7 @@ import Image from 'next/image';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/autoplay';
-
+ 
 interface Sponsor {
   id: string;
   image: string;
