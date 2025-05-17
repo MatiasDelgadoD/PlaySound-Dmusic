@@ -1,41 +1,60 @@
 "use client";
 
 import { Typography } from "@mui/material";
-import React, { useState, useCallback } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { Box } from "@mui/material";
-import dynamic from "next/dynamic";
+import Hls from "hls.js";
 import VideoControls from "./VideoControls";
 
 import Image from "next/image";
-import Logo from '../../../public/MusicTv.png'
-
-
-const ReactPlayer = dynamic(() => import("react-player"), {
-  ssr: false,
-  loading: () => <div>Loading...</div>,
-});
+import Logo from "../../../public/MusicTv.png";
 
 const VideoPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(true); // reproducir por defecto
 
-  const togglePlay = useCallback((e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent default button behavior
-    setIsPlaying((prev) => !prev);
+  const togglePlay = useCallback(() => {
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
   }, []);
 
-  const toggleFullScreen = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    const player = document.getElementById("player") as HTMLElement;
+  const toggleFullScreen = useCallback(() => {
+    const player = videoRef.current;
     if (player) {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else {
         player.requestFullscreen().catch((err) => {
-          console.error('Error attempting to enable fullscreen:', err);
+          console.error("Error enabling fullscreen:", err);
         });
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    const video = videoRef.current;
+    const hls = new Hls();
+
+    hls.loadSource(
+      "https://cdn.mycloudstream.io/hls/live/broadcast/t9zoyztb/index.m3u8"
+    );
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+      if (isPlaying) video.play();
+    });
+
+    return () => {
+      hls.destroy();
+    };
+  }, [isPlaying]);
 
   return (
     <Box
@@ -65,14 +84,15 @@ const VideoPlayer = () => {
             backgroundColor: "#000",
           }}
         >
-          <ReactPlayer
-            id="player"
-            url="https://videos.domint.net:4443/BKoffline.mp4"
-            playing={isPlaying}
-            width="100%"
-            height="100%"
-            controls={false}
+          <video
+            ref={videoRef}
+            controls={true}
+            muted
+            playsInline
             style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
               position: "absolute",
               top: 0,
               left: 0,
@@ -89,11 +109,9 @@ const VideoPlayer = () => {
                 top: "10px",
                 left: "10px",
                 zIndex: 1,
-                backgroundColor:'none'
               }}
             />
           </Box>
-          {/* Overlay con gradiente y texto */}
           <Box
             sx={{
               position: "absolute",

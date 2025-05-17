@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Logo from "../../../public/Copamex-0001.png";
-import {  Box } from "@mui/material";
+import { Box } from "@mui/material";
 import ButtonCustom from "@/components/Button/CustomButton";
 import ButtonList from "../Button/ButtonList";
 // Remove or comment out this line if you're not using Button
@@ -16,11 +16,11 @@ const ToolBar = () => {
         fontSize: 18,
         color: "white",
         position: "fixed",
-        top: 0,         
-        left: 0,         
-        right: 0,      
-        zIndex: 1000,   
-        backgroundColor: "rgba(0, 0, 0, 0.8)", 
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
       }}
     >
       {/* este sector es de botones*/}
@@ -36,28 +36,33 @@ const ToolBar = () => {
       >
         <Image src={Logo} alt={"Copamex"} height={10} width={180} />
         <Box
-        sx={{
-          left: "200px",
-          position: "absolute",
-          ":hover": {
-            color: '#bc0000',   
-        },
-        color: 'red',}}>
+          sx={{
+            left: "200px",
+            position: "absolute",
+            ":hover": {
+              color: "#bc0000",
+            },
+            color: "red",
+          }}
+        >
           <ButtonCustom>Inicio</ButtonCustom>
           <ButtonCustom>Lanzamientos</ButtonCustom>
           <ButtonCustom>Radio en Vivo</ButtonCustom>
           <ButtonCustom>Distribucion musical</ButtonCustom>
           <ButtonCustom>Solicitud para eventos</ButtonCustom>
-          <ButtonList label="Mas" items={[
-            "Promociones",
-            "Progranas especiales",
-            "Medios de comunicacion",
-            "Magazine",
-            "Turismo",
-            "Noticias",
-            "Tour vivo en ti",
-            "Serie: Hoy es un buen dia para aprender a vivir"
-          ]} />
+          <ButtonList
+            label="Mas"
+            items={[
+              "Promociones",
+              "Progranas especiales",
+              "Medios de comunicacion",
+              "Magazine",
+              "Turismo",
+              "Noticias",
+              "Tour vivo en ti",
+              "Serie: Hoy es un buen dia para aprender a vivir",
+            ]}
+          />
         </Box>
       </Box>
       <Box
@@ -69,7 +74,7 @@ const ToolBar = () => {
           padding: 2,
         }}
       >
-        <>cerrar sesion</>
+        <ButtonCustom>Cerrar Sesión</ButtonCustom>
         <ButtonCustom>Inicio</ButtonCustom>
       </Box>
     </Box>
