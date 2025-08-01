@@ -1,6 +1,6 @@
 @import "tailwindcss";
-
-*, 
+@import url("https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@600&display=swap");
+*,
 *::before,
 *::after {
   margin: 0;

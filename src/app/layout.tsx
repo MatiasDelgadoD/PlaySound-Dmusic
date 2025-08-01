@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 import ToolBar from "@/components/toolBar/ToolBar";
 
@@ -25,9 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} `}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} `}>
         <ToolBar />
         {children}
       </body>
