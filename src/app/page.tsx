@@ -2,7 +2,7 @@ import { Box, Container } from "@mui/material";
 import React from "react";
 import YoutubeWindows from "../youtube/page";
 import Sponsors from "../components/sponsors/Sponsors";
-import ArtistCard from '@/pages/Presentaciones/page'
+import ArtistCard from '../pages/Presentaciones/page'
 
 const Header: React.FC = () => {
   return (
