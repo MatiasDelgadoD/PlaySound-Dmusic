@@ -1,3 +1,10 @@
+## Stream Live
+
+
+## Sponsor Box
+this box to belong to a bucle the sponsors and This has an effect which is not active; the hover will be displayed as inactive in gray, otherwise their respective colors will be displayed.
+![Sponsors](/public/Sponsors_line.png)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

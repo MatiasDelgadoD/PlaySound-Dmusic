@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Card, Box, Grid } from "@mui/material";
+import { Card, Box, Grid2, Grid } from "@mui/material";
 import Image from "next/image";
 
 interface Artist {
@@ -45,15 +45,18 @@ const CardArtist = () => {
 
   return (
     <Grid
+      item
       container
       spacing={3}
       sx={{
         margin: 0,
         width: "100%",
-        padding: "24px",
+        padding: "30px",
         mb: 7,
       }}
     >
+      <h1 style={{ width: "100%", marginBottom: "20px", fontSize: "2rem",textAlign: "center" }}
+      >Estrenos</h1>
       {artists.map((artist) => (
         <Grid
           item
@@ -64,15 +67,16 @@ const CardArtist = () => {
           }}
         >
           <Card
+          
             sx={{
-              height: 400,
-              width: 300,
+              height: 300,
+              width: 250,
               justifyItems: "center",
               display: "flex",
               position: "relative",
-              borderRadius: "10px",
               overflow: "hidden", // Cambiado a hidden para contener el overlay
               transition: "all 0.5s ease-in-out",
+              borderRadius: "10px",
               "&:hover": {
                 transform: "scale(1.02) translateY(8px)",
                 "& img": {
@@ -128,11 +132,12 @@ const CardArtist = () => {
       ))}
 
       {/* New "Know More Artists" Card */}
-      <Grid item>
+      <Grid 
+        item>
         <Card
           sx={{
-            height: 400,
-            width: 300,
+            height: 310,
+            width: 250,
             background: "linear-gradient(135deg, #252525 0%, #b30000 100%)",
             display: "flex",
             alignItems: "center",
