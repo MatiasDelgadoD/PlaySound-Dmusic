@@ -5,7 +5,7 @@ export async function getYoutubeVideos() {
   const maxResults = 6;
 try {
   const data = await fetch (
-    `${apiUrl}?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&maxResults=${maxResults}`
+    `${apiUrl}?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&maxResults=${maxResults}`,
   );
 
   if (!data.ok){

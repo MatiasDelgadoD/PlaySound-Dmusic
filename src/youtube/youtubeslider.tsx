@@ -31,7 +31,7 @@ export default function YoutubeSlider({ videos }: { videos: Video[] }) {
         {videos.map((video: Video) => (
           <SwiperSlide key={video.id.videoId}>
             <iframe
-              src={`https://www.youtube.com/embed/${video.id.videoId}`}
+              src={`https://www.youtube.com/embed/${video.id.videoId}?showinfo=0&controls=1`}
               className="w-full h-[400px] rounded-lg"
               allowFullScreen
             />
