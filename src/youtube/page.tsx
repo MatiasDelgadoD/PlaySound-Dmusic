@@ -2,11 +2,12 @@ import { getYoutubeVideos } from "./index"
 import YoutubeSlider from "./youtubeslider"
 
 export default async function YoutubeWindows() {
+  //const safeVideos = videos?.items ?? []
+
   const videos = await getYoutubeVideos()
-  const safeVideos = videos?.items ?? []
   return (
     
-    <YoutubeSlider videos={safeVideos} />
+    <YoutubeSlider videos={videos.items} />
   )
 }
 
