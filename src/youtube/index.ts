@@ -15,7 +15,7 @@ try {
 
 
   return await data.json();
-} catch (error) {
-  throw new Error("Error fetching YouTube data");
+  
+} catch {
   }
 }

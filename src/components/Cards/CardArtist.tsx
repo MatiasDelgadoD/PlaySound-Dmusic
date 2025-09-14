@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Card, Box, Grid2, Grid } from "@mui/material";
+import { Card, Box, Grid } from "@mui/material";
 import Image from "next/image";
 
 interface Artist {
